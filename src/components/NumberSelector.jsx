@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const NumberSelector = ({ setSelectedNumber, SelectedNumber }) => {
+const NumberSelector = ({ seterror, error, setSelectedNumber, SelectedNumber }) => {
 
     const arrayNum = [1, 2, 3, 4, 5, 6];
 
+    const numberSelectorHandler = (value) => {
+        setSelectedNumber(value);
+        seterror("")
+    }
+
+
+
     return (
         <NumberSelectorContainer>
+            <p className='error'>{error}</p>
             <div className='flex'>
                 {arrayNum.map((value, index) => (
                     <Box
                         key={index}
-                        onClick={() => setSelectedNumber(value)} // Use arrow function for consistent this binding
+                        onClick={()=>numberSelectorHandler(value)} // Use arrow function for consistent this binding
                         isSelected={value === SelectedNumber}
                     >
                         {value}
@@ -37,6 +45,11 @@ flex-direction: column;
 p{
     font-size: 24px;
     font-weight: 700px;
+}
+
+.error{
+    color: red;
+
 }
 
 `;

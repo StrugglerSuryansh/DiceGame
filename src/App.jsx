@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
+import StartGame from './components/StartGame';
 
-import styled from "styled-components"
 
-
-const Buttton = styled.button``
 
 const App = () => {
+
+  const [isGameStarted, setisGameStarted] = useState(false);
+
+  const togglePLay = () => {
+    setisGameStarted((prev) => !prev);
+  }
+
+
   return (
     <div>
-      hello
+      <StartGame />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
+
+

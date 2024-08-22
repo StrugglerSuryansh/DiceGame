@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import StartGame from './components/StartGame';
+import GamePLay from './components/GamePLay';
 
 
 
 const App = () => {
 
-  const [isGameStarted, setisGameStarted] = useState(false);
+  const [isGameStarted, setisGameStarted] = useState(true);
 
   const togglePLay = () => {
     setisGameStarted((prev) => !prev);
@@ -14,7 +15,9 @@ const App = () => {
 
   return (
     <div>
-      <StartGame />
+      {
+        isGameStarted ? <GamePLay /> : <StartGame toggle={togglePLay} />
+      }
     </div>
   );
 };

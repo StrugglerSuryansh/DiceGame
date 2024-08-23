@@ -33,6 +33,7 @@ const NumberSelector = ({
 
 export default NumberSelector;
 
+
 const NumberSelectorContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,12 +43,22 @@ const NumberSelectorContainer = styled.div`
     display: flex;
     gap: 24px;
   }
+
   p {
     font-size: 24px;
     font-weight: 700px;
   }
+
   .error {
     color: red;
+  }
+
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    .flex {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
   }
 `;
 
@@ -61,4 +72,9 @@ const Box = styled.div`
   font-weight: 700;
   background-color: ${(props) => (props.isSelected ? "black" : "white")};
   color: ${(props) => (!props.isSelected ? "black" : "white")};
+
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    height: 50px;
+    width: 50px;
+  }
 `;

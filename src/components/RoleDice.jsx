@@ -13,6 +13,7 @@ const RoleDice = ({ roleDice, currentDice }) => {
 
 export default RoleDice;
 
+
 const DiceContainer = styled.div`
   margin-top: 48px;
   display: flex;
@@ -25,5 +26,16 @@ const DiceContainer = styled.div`
 
   p {
     font-size: 24px;
+  }
+
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    margin-top: 24px;
+    .dice {
+      width: 50px;
+      height: 50px;
+    }
+    p {
+      font-size: 18px;
+    }
   }
 `;

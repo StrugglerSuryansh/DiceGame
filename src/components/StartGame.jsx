@@ -22,20 +22,25 @@ const StartGame = ({ toggle }) => {
 
 export default StartGame;
 
+
+
 const Container = styled.div`
-max-width: 1180px;
-height: 100vh;
-display: flex ;
-margin : 0 auto;
-align-items:center;
+  max-width: 1180px;
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
 
-
-.content {
-    h1{
-        font-size: 96px;
-        white-space: nowrap;
-
+  .content {
+    h1 {
+      font-size: 96px;
+      white-space: nowrap;
     }
-}
-`;
+  }
 
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    h1 {
+      font-size: 60px;
+    }
+  }
+`;

@@ -27,10 +27,17 @@ const RulesContainer = styled.div`
   margin-top: 40px;
   border-radius: 10px;
   height: 67%;
+
   h2 {
     font-size: 24px;
   }
+
   .text {
     margin-top: 24px;
+  }
+
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    max-width: 90%;
+    height: auto; // Remove fixed height for better responsiveness
   }
 `;

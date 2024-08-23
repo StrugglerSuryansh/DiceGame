@@ -26,6 +26,7 @@ const RulesContainer = styled.div`
   padding: 20px;
   margin-top: 40px;
   border-radius: 10px;
+  height: 67%;
   h2 {
     font-size: 24px;
   }

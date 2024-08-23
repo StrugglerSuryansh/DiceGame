@@ -6,7 +6,7 @@ import GamePLay from './components/GamePLay';
 
 const App = () => {
 
-  const [isGameStarted, setisGameStarted] = useState(true);
+  const [isGameStarted, setisGameStarted] = useState(false);
 
   const togglePLay = () => {
     setisGameStarted((prev) => !prev);
@@ -26,3 +26,4 @@ export default App;
 
 
 
+     

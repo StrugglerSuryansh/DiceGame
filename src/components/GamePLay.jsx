@@ -1,83 +1,84 @@
-import React, { useState } from 'react'
-import TotalScore from './TotalScore'
-import NumberSelector from './NumberSelector'
-import styled from 'styled-components'
-import RoleDice from './RollDice'
-import Button from '../styled/Button'
+import styled from "styled-components";
+import NumberSelector from "./NumberSelector";
+import TotalScore from "./TotalScore";
+import RoleDice from "./RoleDice";
+import { useState } from "react";
+import { Button, OutlineButton } from "../styled/Button";
+import Rules from "./Rules";
 
-
-const GamePLay = () => {
-
-    const [score, setscore] = useState(0)
-
-    const [SelectedNumber, setSelectedNumber] = useState(null); // Initialize with null
+const GamePlay = () => {
+    const [score, setScore] = useState(0);
+    const [selectedNumber, setSelectedNumber] = useState();
     const [currentDice, setCurrentDice] = useState(1);
-    const [error, seterror] = useState("")
+    const [error, setError] = useState("");
+    const [showRules, setShowRules] = useState(false);
+
     const generateRandomNumber = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return Math.floor(Math.random() * (max - min) + min);
     };
 
-    const rollDice = () => {
-        if (!SelectedNumber) {
-
-            seterror("you have not selected any number");
-
+    const roleDice = () => {
+        if (!selectedNumber) {
+            setError("You have not selected any number");
             return;
         }
 
+        const randomNumber = generateRandomNumber(1, 7);
+        setCurrentDice((prev) => randomNumber);
 
-        const randomNumber = generateRandomNumber(1, 6); // Adjust range to 1-6 for dice
-        setCurrentDice(randomNumber);
-
-
-
-
-
-        if (SelectedNumber === randomNumber) {
-            setscore(prev => prev + randomNumber);
+        if (selectedNumber === randomNumber) {
+            setScore((prev) => prev + randomNumber);
         } else {
-            setscore(prev => prev - 2);
+            setScore((prev) => prev - 2);
         }
 
         setSelectedNumber(undefined);
-
     };
 
+    const resetScore = () => {
+        setScore(0);
+    };
 
     return (
         <MainContainer>
-            <div className='topSection'>
+            <div className="top_section">
                 <TotalScore score={score} />
-                <RoleDice currentDice={currentDice} rollDice={rollDice} />
-                <NumberSelector SelectedNumber={SelectedNumber} setSelectedNumber={setSelectedNumber} error={error} seterror={seterror} />
+                <NumberSelector
+                    error={error}
+                    setError={setError}
+                    selectedNumber={selectedNumber}
+                    setSelectedNumber={setSelectedNumber}
+                />
             </div>
-            <div className='btns'>
+            <RoleDice currentDice={currentDice} roleDice={roleDice} />
+            <div className="btns">
+                <OutlineButton onClick={resetScore}>Reset Score</OutlineButton>
+                <Button onClick={() => setShowRules((prev) => !prev)}>
+                    {showRules ? "Hide" : "Show"} Rules
+                </Button>
+            </div>
 
-                <OutlineButton>Reset</OutlineButton>
-                <Button>Show Rules</Button>
-            </div>
+            {showRules && <Rules />}
         </MainContainer>
-    )
-}
+    );
+};
 
-export default GamePLay
-
-
+export default GamePlay;
 
 const MainContainer = styled.main`
-padding-top: 70px;
-
-.topSection{
+  padding-top: 70px;
+  .top_section {
     display: flex;
     justify-content: space-around;
-    align-items:  end;
-}
-.btns{
+    align-items: end;
+  }
+  .btns {
+    margin-top: 40px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-}
-
+  }
 `;

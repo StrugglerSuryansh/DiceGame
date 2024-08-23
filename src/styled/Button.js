@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+export const Button = styled.button`
   color: white;
   padding: 10px 18px;
   background: #000000;
@@ -18,7 +18,7 @@ const Button = styled.button`
     transition: 0.3s background ease-in;
   }
 `;
-const OutlineButton = styled(Button)`
+export const OutlineButton = styled(Button)`
   background-color: white;
   border: 1px solid black;
   color: black;
@@ -30,4 +30,3 @@ const OutlineButton = styled(Button)`
 `;
 
 
-export default Button;

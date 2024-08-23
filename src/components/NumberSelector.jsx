@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const NumberSelector = ({ seterror, error, setSelectedNumber, SelectedNumber }) => {
+const NumberSelector = ({ setError, error, setSelectedNumber, SelectedNumber }) => {
 
     const arrayNum = [1, 2, 3, 4, 5, 6];
 
     const numberSelectorHandler = (value) => {
         setSelectedNumber(value);
-        seterror("")
+        setError("")
     }
 
 
@@ -19,7 +19,7 @@ const NumberSelector = ({ seterror, error, setSelectedNumber, SelectedNumber }) 
                 {arrayNum.map((value, index) => (
                     <Box
                         key={index}
-                        onClick={()=>numberSelectorHandler(value)} // Use arrow function for consistent this binding
+                        onClick={() => numberSelectorHandler(value)} // Use arrow function for consistent this binding
                         isSelected={value === SelectedNumber}
                     >
                         {value}
@@ -66,3 +66,4 @@ const Box = styled.div`
   color: ${(props) => (!props.isSelected ? 'black' : 'white')};
 
 `;
+

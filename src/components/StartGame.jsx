@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../styled/Button';
+import { Button } from '../styled/Button';
 
 const StartGame = ({ toggle }) => {
     return (

@@ -9,11 +9,12 @@ const StartGame = ({ toggle }) => {
                 <div>
                     <img src="/images/dices.png" alt="" />
                 </div>
-                <div className='content'>
+                <div className='content '>
                     <h1>DICE GAME</h1>
                     <Button
                         onClick={toggle}
                     >Play Now</Button>
+                    
                 </div>
             </Container>
         </div>
@@ -30,17 +31,42 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
   align-items: center;
+  overflow-y: hidden;
+
+  @media (max-width: 640px) {
+    height:100vh;
+    width:100vw;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  img{
+    @media (max-width: 640px) {
+        height:140px;
+      }
+  }  
+
 
   .content {
     h1 {
       font-size: 96px;
       white-space: nowrap;
-    }
-  }
 
-  @media (max-width: 768px) { // Adjust breakpoint as needed
-    h1 {
-      font-size: 60px;
+      @media (max-width: 640px) {
+        font-size: 34px;
+        text-align:center;
+      }
+
+    }
+
+    button{
+      @media (max-width: 640px) {
+        margin-top:15px;
+        width:80%;
+      }
     }
   }
+  
+  
+
 `;

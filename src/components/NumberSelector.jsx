@@ -55,9 +55,11 @@ const NumberSelectorContainer = styled.div`
 
   @media (max-width: 768px) { // Adjust breakpoint as needed
     .flex {
-      flex-direction: column;
+      max-width:200px;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
+      gap: 20px;
+      margin:10px 0;
     }
   }
 `;
